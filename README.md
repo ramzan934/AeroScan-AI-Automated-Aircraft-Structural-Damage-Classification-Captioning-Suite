@@ -1,69 +1,45 @@
 # ✈️ AeroScan AI: Automated Aircraft Structural Damage Classification & Captioning Suite
 
-> **An advanced multimodal AI dashboard combining Deep Convolutional Neural Networks (CNN) and Vision-Language Models (BLIP) for automated aircraft structural integrity inspection.**
+Welcome to the Aircraft Damage Inspection Project! This project utilizes Computer Vision and Vision-Language models to classify, caption, and summarize aircraft surface damage (Crack and Dent).
 
----
+📌 Project Overview
+This project is designed to make aircraft safety inspection fast and automated:
 
-## 📌 Project Overview
+CNN Damage Classification: Uses a deep learning model to check images and identify whether the defect is a Crack or a Dent.
 
-Manual structural inspection of commercial aircraft fuselages is time-consuming and subject to human fatigue. **AeroScan AI** provides an automated visual inspection and diagnostic framework:
+BLIP Text Generation: Leverages a pretrained BLIP model to generate automated captions and structural summary reports.
 
-1. **Defect Classification:** Classifies structural panel defects into high-risk categories (`Crack` vs `Dent`) using a deep CNN backbone.
-2. **Multimodal Captioning & Summarization:** Leverages the **BLIP (Bootstrapping Language-Image Pre-training)** vision-language model to generate human-readable diagnostic descriptions and maintenance summaries.
-3. **Visual Bounding Overlays:** Draws dynamic highlight bounding regions around identified defects.
-4. **Automated Inspection Reporting:** Generates audit-ready JSON inspection logs with severity levels and confidence scores.
+Visual Damage Overlay: Draws a bounding box overlay on the image to highlight high-risk damaged regions.
 
----
+JSON Audit Report: Live exports inspection results in a formatted JSON structure.
 
-## 🚀 Key Features
+🚀 Key Features
+Dual AI Inference: A seamless combination of TensorFlow (CNN Classification) and PyTorch Transformers (BLIP Captioning).
 
-* **Dual AI Inference Pipeline:** Combines TensorFlow/Keras vision models with PyTorch Transformers.
-* **Interactive Gradio Dashboard:** Dark-themed UI for instant upload and URL analysis.
-* **Bounding Overlay Highlights:** Visual indicator highlighting damaged zones (`Crack` in Red, `Dent` in Orange).
-* **Automated JSON Audit Logs:** Generates real-time structured logs containing Inspection ID, confidence scores, and recommended actions.
-* **Google Colab Ready:** Easily deployable in cloud GPU environments.
+Gradio Dashboard UI: A dark-themed web interface where you can upload images directly to run live inspections.
 
----
+Automated Summary Logs: Provides detailed confidence scores, primary defect classification, and maintenance recommendations.
 
-## 🏗️ System Architecture
+🛠️ How to Run on Google Colab
+Install Dependencies:pip install gradio tensorflow torch transformers pillow numpy
 
-┌───────────────────────────────┐
-                           │     Input Aircraft Photo      │
-                           └───────────────┬───────────────┘
-                                           │
-                           ┌───────────────┴───────────────┐
-                           │                               │
-                           ▼                               ▼
-          ┌─────────────────────────────────┐   ┌─────────────────────────────────┐
-          │     Deep CNN Classifier         │   │   BLIP Multimodal Transformer   │
-          │   (Classify: Dent vs Crack)     │   │  (Captioning & Summarization)   │
-          └────────────────┬────────────────┘   └────────────────┬────────────────┘
-                           │                                     │
-                           └───────────────┬─────────────────────┘
-                                           │
-                                           ▼
-                           ┌───────────────────────────────┐
-                           │   Interactive Gradio Suite    │
-                           │   - Visual Bounding Overlay   │
-                           │   - Probability Distribution  │
-                           │   - JSON Log Report           │
-                           └───────────────────────────────┘
-## 🛠️ Installation & Setup
+Run the Notebook:
+Execute all Colab Notebook cells sequentially so that both the CNN and BLIP models are loaded into memory.
 
-### Prerequisites
-- Python 3.10 or higher
-- GPU support recommended (CUDA/Google Colab T4)
+Launch Gradio:
+Execute the Gradio code cell and click on the generated public link to access your dashboard!
 
-## Sample Output
-
+📋 Sample Output Structure
+JSON
 {
     "Inspection_ID": "AERO-1710000000",
     "Primary_Defect": "Crack",
     "Confidence_Score": "94.20%",
-    "AI_Generated_Caption": "A close up photo of a visible crack along the metallic panel of an aircraft fuselage.",
-    "AI_Structural_Summary": "Structural fracture detected requiring non-destructive testing (NDT) and immediate patch repair.",
-    "Recommended_Action": "Immediate NDT Testing & Repair Patch"
+    "Caption": "A close up photo of a visible crack along the metallic panel of an aircraft fuselage.",
+    "Summary": "Structural fracture detected requiring non-destructive testing (NDT) and immediate patch repair."
 }
+📜 License
+MIT License - Available for open-source and educational use.
 
 
 
